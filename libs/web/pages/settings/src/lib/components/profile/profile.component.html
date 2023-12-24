@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <div class="d-flex align-items-center">
+       <div style="width: 57px; height: 57px; border-radius: 50px; overflow: hidden">
+         <img class="img-fluid" alt="" ngSrc="https://material.angular.io/assets/img/examples/shiba2.jpg" width="57" height="57" >
+       </div>
+      <div class="col ms-3">
+        <p class="mat-headline-3 m-0 p-0" >{{ profile().name }}</p>
+        <p class="mat-headline-3 m-0 p-0 text-light">{{ profile().email }}</p>
+      </div>
+      <div>
+        <button mat-button color="primary mat-headline-3 m-0 p-0 px-3 ">Edit Profile</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,12 @@
+.actions {
+  --mdc-text-button-container-height: fit-content !important;
+
+  & .icon {
+    background: rgba(183, 188, 194, 0.40);;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+
+  }
+}
+

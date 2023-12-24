@@ -1,0 +1,81 @@
+<h1>Get Started</h1>
+<p>Create an account and start tracking your mobile wallet funds.</p>
+<div class="mt-4">
+  <asl-google-signin-button
+    type="standard"
+    logo_alignment="center"
+    width="240px"
+    size="large">
+  </asl-google-signin-button>
+</div>
+<div class="py-3">
+  By Signing Up, you agree to M-Wazi App
+  <button class="mat-body-2" color="primary" mat-button (click)="showTermsOfService()">Terms & Privacy Policy</button>
+</div>
+
+<ng-template #termsOfService>
+  <h2 mat-dialog-title class="m-0 p-3 pb-0 mat-h2">
+    Terms of use
+    <button mat-dialog-close class="float-end" mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  <div mat-dialog-content>
+    <p>Last updated on 01/06/2022</p>
+    <p>By using this app, we assume you accept these terms and conditions. Do not continue to use M-Wazi if you do not
+      agree to take all of the terms and conditions stated on this page.</p>
+
+    <p>The following terminology applies to these Terms and Conditions, Privacy Statement, and Disclaimer Notice and all
+      Agreements: "Client", "You", and "Your" refers to you, the person log on this website and compliant to the
+      Company’s terms and conditions. "The Company", "Ourselves", "We", "Our", and "Us" refer to our Company. "Party",
+      "Parties", or "Us" refer to both the Client and ourselves. All terms refer to the offer, acceptance, and
+      consideration of payment necessary to undertake the process of our assistance to the Client in the most
+      appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s
+      stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above
+      terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as
+      interchangeable and therefore as referring to the same.</p>
+
+    <h2>License</h2>
+    <p>Unless otherwise stated, M-Wazi and/or its licensors own the intellectual property rights for all material on
+      M-Wazi. All intellectual property rights are reserved. You may access this from M-Wazi for your own personal use
+      subject to restrictions set in these terms and conditions.</p>
+
+    <p><strong>You must not:</strong></p>
+    <ul>
+      <li>Republish material from M-Wazi</li>
+      <li>Sell, rent, or sub-license material from M-Wazi</li>
+      <li>Reproduce, duplicate, or copy material from M-Wazi</li>
+      <li>Redistribute content from M-Wazi</li>
+    </ul>
+
+    <p>This Agreement shall begin on the date hereof.</p>
+
+    <p>Parts of this app offer an opportunity for users to post and exchange opinions and information in certain areas
+      of the website. M-Wazi does not filter, edit, publish or review Comments prior to their presence on the website.
+      Comments do not reflect the views and opinions of M-Wazi, its agents and/or affiliates. Comments reflect the views
+      and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, M-Wazi
+      shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result
+      of any use of and/or posting of and/or appearance of the Comments on this website.</p>
+
+    <p>M-Wazi reserves the right to monitor all Comments and to remove any Comments which can be considered
+      inappropriate, offensive, or causes a breach of these Terms and Conditions.</p>
+
+    <p><strong>You warrant and represent that:</strong></p>
+    <ul>
+      <li>You are entitled to post the Comments on our App and have all necessary licenses and consents to do so;</li>
+      <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent, or
+        trademark of any third party;
+      </li>
+      <li>The Comments do not contain any defamatory, libelous, offensive, indecent, or otherwise unlawful material
+        which is an invasion of privacy;
+      </li>
+      <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or
+        unlawful activity.
+      </li>
+    </ul>
+
+    <p>You hereby grant M-Wazi a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce
+      and edit any of your Comments in any and all forms, formats or media.</p>
+
+  </div>
+</ng-template>

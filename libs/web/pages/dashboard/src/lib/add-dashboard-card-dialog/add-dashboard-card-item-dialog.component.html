@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Select Card Item</h2>
+<div mat-dialog-content>
+  <ul>
+    @for (subtask of items; track subtask) {
+      <li>
+        <mat-checkbox [(ngModel)]="subtask.selected">
+          {{subtask.title}}
+        </mat-checkbox>
+      </li>
+    }
+  </ul>
+</div>
+<div mat-dialog-actions class="p-3">
+  <button [mat-dialog-close]="false" mat-button color="primary">Cancel</button>
+  <button mat-raised-button color="primary" (click)="updateFields()">Save</button>
+</div>

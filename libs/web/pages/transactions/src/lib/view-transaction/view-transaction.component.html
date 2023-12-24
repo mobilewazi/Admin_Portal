@@ -1,0 +1,47 @@
+<div
+  data-aos="fade"
+  data-aos-duration="200ms"
+  data-aos-delay="100ms"
+  class="p-4 text-white"
+  [class.bg-danger]="isDebitTransaction()"
+  [class.bg-success]="!isDebitTransaction()"
+
+>
+  <div class="d-flex justify-content-between">
+    <mwazi-back-button class="pb-2"></mwazi-back-button>
+    <button mat-icon-button (click)="openDeleteTransactionDialog()">
+      <mat-icon svgIcon="delete"></mat-icon>
+    </button>
+  </div>
+  <div class="pb-4">
+    <span class="mat-h1"> {{ isDebitTransaction() ? '-' : '+'}}{{ transaction().transactionAmount | currency: ' ' }} KES</span>
+    <p class="mt-2">{{ transaction().senderName }} {{ transaction().transactionDate | date:'dd, MMM yyyy hh:mm a'}}</p>
+  </div>
+</div>
+<mat-tab-group animationDuration="700ms">
+  <mat-tab label="Transaction Info">
+    <div data-aos="fade" data-aos-duration="400ms" data-aos-delay="200ms"
+         class="p-4 d-flex justify-content-between align-items-center flex-wrap">
+    </div>
+
+  </mat-tab>
+  <mat-tab [label]="commentTabTitle()">
+    <mwazi-transaction-comments [transactionComments]="this.comments()"></mwazi-transaction-comments>
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template #successDialogContents>
+  <h2>Great news
+    <mat-icon svgIcon="thumbs-up"></mat-icon>
+  </h2>
+  <p>Transaction has been deleted successfully!</p>
+</ng-template>
+<ng-template #successDialogActions>
+  <button [mat-dialog-close]="true" color="primary" mat-raised-button>
+    Back to project
+  </button>
+</ng-template>
+
+
+
+

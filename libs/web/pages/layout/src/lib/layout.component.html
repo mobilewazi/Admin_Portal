@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="d-flex justify-content-between align-items-center">
+  <div class="d-flex align-items-center">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+            aria-label="Example icon-button with menu icon">
+      <mat-icon>
+        {{ drawer.opened ? 'menu_open' : 'menu' }}
+      </mat-icon>
+    </button>
+    <span>M-wazi</span>
+  </div>
+  <button (click)="openProfileDialog(drawerProfile, drawer)" mat-icon-button class="example-icon"
+          aria-label="Example icon-button with menu icon">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" opened class="p-2">
+
+    <mat-list *ngFor="let link of links()">
+      <mat-list-item [routerLink]="link.href" routerLinkActive="active">
+        <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+        <div matListItemTitle>{{ link.label }}</div>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-drawer>
+  <mat-drawer-content class="p-3">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+  <mat-drawer #drawerProfile mode="side" position="end" [opened]="false" class="p-3">
+    <h2 class="mb-0 mt-1">Profile</h2>
+    <mwazi-setting-profile></mwazi-setting-profile>
+    <h2 class="mb-0 mt-4">Settings and preference</h2>
+    <mwazi-link-card cardTitle="Personal Information" icon="user"></mwazi-link-card>
+    <h2 class="mb-0 mt-4">Help Center</h2>
+    <mwazi-link-card cardTitle="Support" subTitle="Email or Whatspp us for assistance "
+                     icon="head-phones"></mwazi-link-card>
+    <mwazi-link-card cardTitle="Privacy Terms" icon="text"></mwazi-link-card>
+    <mwazi-link-card cardTitle="FAQs" icon="faq"></mwazi-link-card>
+
+  </mat-drawer>
+</mat-drawer-container>

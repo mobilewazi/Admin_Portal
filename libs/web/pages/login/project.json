@@ -1,0 +1,27 @@
+{
+  "name": "web-pages-login",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "web/pages/login/src",
+  "prefix": "mwazi",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "web/pages/login/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "web/pages/login/**/*.ts",
+          "web/pages/login/**/*.html"
+        ]
+      }
+    }
+  }
+}

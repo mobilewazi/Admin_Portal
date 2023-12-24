@@ -1,0 +1,126 @@
+<h1>Reports</h1>
+
+<button (click)="downloadCsv()">Download CSV</button>
+<button (click)="downloadPdf()">Download PDF</button>
+
+<div class="p-5 pe-0 bg-white pb-5" style=" background: white">
+    <div class="report">
+        <div class="row">
+            <div class="col-lg-7">
+                <a href="https://m-wazi.com"><img alt="" ngSrc="/assets/logo.svg" [height]="36" [width]="151"></a>
+                <p class="mb-5">Control your project funds.</p>
+                <p>Group Administrators:</p>
+                <p>1. {{ report().projectAdmin }}</p>
+                <p>[Phone number not available]</p>
+                <div><p
+                >[Project description not available]</p>
+                    <div>
+                        <span class="">{{ report().category }}</span></div>
+                </div>
+            </div>
+            <div class="col">
+                <h2>{{ report().projectName }}</h2>
+                <div class="d-flex">
+                    <div>
+                        <img alt="" class="" src="/assets/icons/report-project-date.svg" style="height: 20px;">
+                        Project dates:
+                    </div>
+                    <div>
+                        Start
+                        {{ report().startDate }}
+                        {{ report().startDate | date: 'mediumDate' }}</div>
+                </div>
+                <div style="margin-top: 0px;">
+                    <div *ngIf="report().endDate">End {{ report().endDate | date: 'mediumDate' }}</div>
+                </div>
+                <div>
+                    <div><img alt="" class=""
+                              src="/assets/icons/report-target-amount.svg"
+                              style="height: 20px;">
+                        <p>Project target
+                            amount:</p></div>
+                    {{ report().targetAmount }}
+                </div>
+                <div>
+                    <div><img class="MuiBox-root css-0"
+                              src="/assets/icons/report-transactions.svg"
+                              style="height: 20px;">
+                        <p>Project
+                            collection:</p></div>
+                    <div><p
+                    >
+                        Collections </p>
+                        <p>
+                            <b class="">{{ moneyIn() | currency: ' KES ' }}</b></p></div>
+                </div>
+                <div style="margin-top: 0px;"><p
+                ></p>
+                    <div><p
+                    >Expenses </p>
+                        <p>
+                            <b class="">- {{ moneyOut() | currency: ' KES ' }}</b></p></div>
+                </div>
+                <div style="margin-top: 0px;"><p
+                ></p>
+                    <div><p
+                    >Balance </p>
+                        <p>
+                            <b class="">{{ balance() | currency: ' KES ' }}</b></p></div>
+                </div>
+            </div>
+        </div>
+        <div><p
+        >[Project description not
+            available]</p>
+            <div>
+                <span class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label">Wedding</span></div>
+        </div>
+        <h5>Transactions</h5>
+        <div
+                style="border-radius: 0px;">
+
+
+            <table cdk-table [dataSource]="report().transactions" class="mb-5 mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container cdkColumnDef="no">
+                    <th cdk-header-cell *cdkHeaderCellDef> No.</th>
+                    <td cdk-cell *cdkCellDef="let element; let i = index"> {{ i + 1 }} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container cdkColumnDef="date">
+                    <th cdk-header-cell *cdkHeaderCellDef> Date</th>
+                    <td cdk-cell *cdkCellDef="let element"> {{element.transactionDate | date: 'shortDate' }} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container cdkColumnDef="details">
+                    <th cdk-header-cell *cdkHeaderCellDef> Details</th>
+                    <td cdk-cell *cdkCellDef="let element"> {{element.senderName}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container cdkColumnDef="amount">
+                    <th cdk-header-cell *cdkHeaderCellDef> Amount (KES)</th>
+                    <td cdk-cell *cdkCellDef="let element">
+                        <span [innerHTML]="element.transactionAmount | currency: ' '| mwaziTransaction: element.transactionType"></span>
+                    </td>
+                </ng-container>
+
+                <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+                <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+    </div>
+    <div><p
+    >Download
+        <strong>M-Wazi</strong> &amp; control your project funds</p><a
+            href="https://play.google.com/store/apps/details?id=com.mobile.m_wazi"><img class="MuiBox-root css-0"
+                                                                                        src="/assets/images/google-play.png"
+                                                                                        style="width: 120px;"></a></div>
+</div>

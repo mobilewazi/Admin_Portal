@@ -1,0 +1,61 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+@import "custom-pallette";
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$web-primary: mat.define-palette($md-web-primary);
+$web-accent: mat.define-palette($md-web-accent);
+
+
+// The warn palette is optional (defaults to red).
+$web-warn: mat.define-palette($md-web-warn);
+
+$web-typography-config: mat.define-typography-config(
+  $headline-1: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $headline-2: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $headline-3: mat.define-typography-level(13px, 15px, 500, $letter-spacing: -0.005em),
+  $headline-4: mat.define-typography-level(14px, 20px, 500),
+  $headline-5: mat.define-typography-level(1.825rem, 2.5rem, 700), // h1 OK
+  $headline-6: mat.define-typography-level(24px, 32px, 400), // h2
+  $subtitle-1: mat.define-typography-level(14px, 20px, 600), // h3
+  $subtitle-2: mat.define-typography-level(0.8rem, 1rem, 600), // h4 , Table Headers
+  $body-1: mat.define-typography-level(1rem, 1.825rem, 500), // Select value
+  $body-2: mat.define-typography-level(1rem, 1.25rem, 400), // p OK
+  $caption: mat.define-typography-level(12px, 16px,600), // mat-error caption OK
+  $button: mat.define-typography-level(1.25rem, 40rem, 600), // button OK
+);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$web-theme: mat.define-light-theme((
+  color: (
+    primary: $web-primary,
+    accent: $web-accent,
+    warn: $web-warn,
+  ),
+  density: 0,
+  typography: $web-typography-config
+));
+
+@include mat.typography-hierarchy($web-typography-config);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($web-theme);
+
+.mdc-button--raised, .mdc-button--outlined, {
+  padding: 1.75rem 5rem !important;
+  max-height: unset !important;
+}

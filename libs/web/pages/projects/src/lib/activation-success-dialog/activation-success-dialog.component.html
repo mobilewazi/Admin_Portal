@@ -1,0 +1,24 @@
+<div mat-dialog-content class="pt-5 bg-dark text-white text-center">
+  @if (projectIsActive()) {
+    <h2>Great news
+      <mat-icon svgIcon="thumbs-up"></mat-icon>
+    </h2>
+    <p>Your project has been activated successfully!</p>
+  } @else {
+    <p class="p-3 d-flex align-items-center justify-content-center">
+      Project deactivated successfully
+      <mat-icon svgIcon="thumbs-up"></mat-icon>
+    </p>
+  }
+
+</div>
+<div mat-dialog-actions class="bg-dark text-center text-white p-3 px-5 d-flex justify-content-center">
+  <button mat-dialog-close color="primary" mat-raised-button>
+
+    @if (projectIsActive()) {
+      View project details
+    } @else {
+      Done
+    }
+  </button>
+</div>

@@ -1,0 +1,46 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mwazi/auth": ["libs/shared/auth/src/index.ts"],
+      "@mwazi/components/auth": ["libs/web/pages/auth/src/index.ts"],
+      "@mwazi/pages/dashboard": ["libs/web/pages/dashboard/src/index.ts"],
+      "@mwazi/pages/login": ["libs/web/pages/login/src/index.ts"],
+      "@mwazi/shared/alert": ["libs/shared/alert/src/index.ts"],
+      "@mwazi/shared/back-button": ["libs/shared/back-button/src/index.ts"],
+      "@mwazi/shared/comments": ["libs/shared/comments/src/index.ts"],
+      "@mwazi/shared/data-models": ["libs/shared/data-models/src/index.ts"],
+      "@mwazi/shared/icons": ["libs/shared/icons/src/index.ts"],
+      "@mwazi/shared/loading": ["libs/shared/loading/src/index.ts"],
+      "@mwazi/shared/profile": ["libs/shared/profile/src/index.ts"],
+      "@mwazi/shared/report": ["libs/shared/report/src/index.ts"],
+      "@mwazi/shared/transaction": ["libs/shared/transaction/src/index.ts"],
+      "@mwazi/web/config": ["libs/web/config/src/index.ts"],
+      "@mwazi/web/dashboard": ["libs/web/dashboard/src/index.ts"],
+      "@mwazi/web/pages/layout": ["libs/web/pages/layout/src/index.ts"],
+      "@mwazi/web/pages/onboarding": ["libs/web/pages/onboarding/src/index.ts"],
+      "@mwazi/web/pages/profile": ["libs/web/pages/profile/src/index.ts"],
+      "@mwazi/web/pages/projects": ["libs/web/pages/projects/src/index.ts"],
+      "@mwazi/web/pages/reports": ["libs/web/pages/report/src/index.ts"],
+      "@mwazi/web/pages/settings": ["libs/web/pages/settings/src/index.ts"],
+      "@mwazi/web/pages/transactions": [
+        "libs/web/pages/transactions/src/index.ts"
+      ],
+      "@mzima/shared/projects": ["libs/shared/project/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

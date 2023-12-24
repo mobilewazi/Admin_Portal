@@ -1,0 +1,82 @@
+<div mat-dialog-title>
+  New Transaction
+</div>
+
+<div mat-dialog-content class="pt-3">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" id="new-transaction-form">
+    <div class="row flex-wrap">
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select formControlName="paymentType">
+            <mat-option value="M-PESA">M-Pesa</mat-option>
+            <mat-option value="CASH">Cash</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Sender Name</mat-label>
+          <input matInput formControlName="senderName" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Transaction Amount</mat-label>
+          <input matInput type="number" formControlName="transactionAmount" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Transaction Date</mat-label>
+          <input matInput type="date" formControlName="transactionDate" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Transaction Code</mat-label>
+          <input matInput formControlName="transactionCode" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Transaction Type</mat-label>
+          <mat-select formControlName="transactionType">
+            <mat-option value="C">Collection</mat-option>
+            <mat-option value="D">Expense</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Additional Comment</mat-label>
+          <input matInput formControlName="additionalComment" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Message ID</mat-label>
+          <input matInput formControlName="messageId" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Project ID</mat-label>
+          <input matInput type="number" formControlName="projectId" required>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="p-3 d-flex justify-content-between">
+  <button [mat-dialog-close]="false" color="primary" mat-stroked-button>Cancel</button>
+  <button color="primary" [disabled]="form.invalid" form="new-transaction-form" type="submit" mat-raised-button>Submit
+  </button>
+</div>

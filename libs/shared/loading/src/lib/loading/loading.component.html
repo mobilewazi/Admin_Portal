@@ -1,0 +1,5 @@
+<div class="position-fixed d-flex align-items-center justify-content-center wrap_contents" *ngIf="showLoader()">
+  <div class="spinner-wrapper">
+    <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+  </div>
+</div>

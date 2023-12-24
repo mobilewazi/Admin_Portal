@@ -1,0 +1,14 @@
+@if (data.dialogContents) {
+  <div mat-dialog-content class="pt-5 bg-dark text-white text-center">
+    <ng-container [ngTemplateOutlet]="data.dialogContents"
+                  [ngTemplateOutletContext]="{ $implicit: data.dialogContentsContext}"></ng-container>
+  </div>
+}
+
+@if (data.dialogActions) {
+  <div mat-dialog-actions class="bg-dark text-center text-white p-3 pb-5 px-5 d-flex justify-content-center">
+    <ng-container [ngTemplateOutlet]="data.dialogActions"
+                  [ngTemplateOutletContext]="{ $implicit: data.dialogActionsContext}"></ng-container>
+  </div>
+}
+

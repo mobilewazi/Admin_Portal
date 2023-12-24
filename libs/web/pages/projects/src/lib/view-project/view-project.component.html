@@ -1,0 +1,127 @@
+<h1 data-aos="fade" data-aos-duration="200ms">Projects | {{ project().projectName }}</h1>
+<div data-aos="fade" data-aos-duration="200ms" data-aos-delay="100ms" class="p-4 bg-dark text-white">
+  <div class="d-flex justify-content-between">
+    <h2 data-aos="fade" data-aos-duration="400ms">{{ project().projectName }}</h2>
+    <button mat-icon-button [routerLink]="['edit']">
+      <mat-icon svgIcon="edit"></mat-icon>
+    </button>
+  </div>
+
+  <p>Start Date: {{ project().startDate | date: 'ccc, MMMM d, y' }}</p>
+  <div>
+    <button mat-button class="text-white actions my-4 p-2" color="primary">
+      <div class="d-flex align-items-center">
+        <div class="d-inline-flex justify-content-center align-items-center icon">
+          <mat-icon svgIcon="view-report"></mat-icon>
+        </div>
+        <span class="ms-2 mat-body-2"> View Report</span>
+      </div>
+    </button>
+    <button mat-button class="text-white actions my-4 p-2" color="primary">
+      <div class="d-flex align-items-center">
+        <div class="d-inline-flex justify-content-center align-items-center icon">
+          <mat-icon svgIcon="share"></mat-icon>
+        </div>
+        <span class="ms-2 mat-body-2"> Share Report </span>
+      </div>
+    </button>
+  </div>
+</div>
+<mat-tab-group animationDuration="700ms">
+  <mat-tab label="Project Details">
+    <div data-aos="fade" data-aos-duration="400ms" data-aos-delay="200ms"
+         class="p-4 d-flex justify-content-between align-items-center flex-wrap">
+      <h3 class="m-0 p-0">{{ project().category }}</h3>
+      <div class="d-flex align-items-center">
+        <mat-icon [color]=" project().status === 'Active' ? 'accent' : 'warn'" svgIcon="dot"></mat-icon>
+        {{ project().status }}
+      </div>
+
+    </div>
+    <div data-aos="fade" class="p-4 d-flex flex-wrap">
+
+      <div class="col-1 mb-4">
+        <mat-icon svgIcon="calendar"></mat-icon>
+      </div>
+      <div class="col-4 mb-4">
+        Project dates:
+        <div class="d-flex justify-content-between py-2 align-items-center">
+          <div class="col">Start Date</div>
+          <div class="col-4 text-end">{{ project().startDate | date: 'shortDate' }}</div>
+        </div>
+        <div class="d-flex justify-content-between py-2 align-items-center">
+          <div class="col">End Date</div>
+          <div class="col-4 text-end">{{ project().endDate | date: 'shortDate' }}</div>
+        </div>
+      </div>
+      <div class="col-1 offset-lg-3 text-light mb-4">
+        <mat-icon svgIcon="target"></mat-icon>
+      </div>
+      <div class="col-3 mb-4">
+        Target amount
+        <div class="d-flex justify-content-between py-2 align-items-center">
+          <span *ngIf="project().targetAmount">{{ project().targetAmount }}</span>
+          <span *ngIf="!project().targetAmount" class="text-light">No target set</span>
+        </div>
+      </div>
+      <div class="col-1 mb-4">
+        <mat-icon svgIcon="hand-giving"></mat-icon>
+      </div>
+      <div class="col-4">
+        Transactions:
+        <div class="d-flex justify-content-between py-2 align-items-center">
+          <span>Collections</span>
+          <span>{{ totalCollections() | currency: ' ' }}</span>
+        </div>
+        <div class="d-flex justify-content-between py-2 align-items-center">
+          <span>Expenses</span>
+          <span>{{ totalExpenses() | currency : ' ' }}</span>
+        </div>
+        <div class="d-flex justify-content-between py-2 align-items-center">
+          <strong class="col">Balance</strong>
+          <div class="col-4 text-end pt-2" style="border-top: 1px solid #344054; border-bottom: 1px solid #344054">
+            {{ totalBalance() | currency : ' ' }}
+            <div class="mt-2" style="border-bottom: 1px solid #344054; margin-bottom: 5px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-4">
+      <button (click)="toggleProjectActiveStatus()" mat-button [color]="projectIsActive() ? 'accent' : 'warn'">
+        @if (projectIsActive()) {
+          Activate Project
+        } @else {
+          Deactivate Project
+        }
+      </button>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Project Transactions">
+
+    <div class="d-flex justify-content-end">
+      <button class="m-3" data-aos="fade" mat-raised-button color="primary" (click)="openNewTransactionDialog()">
+        <mat-icon svgIcon="plus"></mat-icon>
+        Add Transaction
+      </button>
+    </div>
+    @defer () {
+      <mwazi-transaction-table [transactions]="transactionsSorted()"></mwazi-transaction-table>
+    }
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template #successDialogContents>
+  <h2>Great news
+    <mat-icon svgIcon="thumbs-up"></mat-icon>
+  </h2>
+  <p>
+    Your transaction has been created successfully!</p>
+</ng-template>
+<ng-template #successDialogActions>
+  <button [mat-dialog-close]="true" color="primary" mat-raised-button>
+    Done
+  </button>
+</ng-template>
+
+

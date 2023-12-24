@@ -1,0 +1,61 @@
+@if (dataSource.data().length > 0) {
+  <table cdk-table [dataSource]="dataSource">
+    <!-- Label Column -->
+    <ng-container cdkColumnDef="label">
+      <th cdk-header-cell *cdkHeaderCellDef></th>
+      <td cdk-cell *cdkCellDef="let element" class="text-start">
+      <span class="mat-subtitle-1">
+        {{ element['senderName'] }}
+      </span>
+        <p class="text-light">
+          {{ element['transactionDate']| date: 'dd MMM, YYYY hh:mma' }}
+        </p>
+
+      </td>
+    </ng-container>
+
+    <!-- Amount Column -->
+    <ng-container cdkColumnDef="actions">
+      <th cdk-header-cell *cdkHeaderCellDef class="text-start ps-5"></th>
+      <td cdk-cell *cdkCellDef="let element" class="text-start pe-5">
+        <button class="me-2" [routerLink]="['transactions', element['id']]" mat-icon-button>
+          <mat-icon color="accent" svgIcon="eye"></mat-icon>
+        </button>
+        <button class="me-2" mat-icon-button (click)="openEditTransactionDialog(element)">
+          <mat-icon color="primary" svgIcon="edit"></mat-icon>
+        </button>
+        <button class="me-2" mat-icon-button (click)="openDeleteConfirmationDialog(element['id'])">
+          <mat-icon color="warn" svgIcon="delete"></mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container cdkColumnDef="amount">
+      <th cdk-header-cell *cdkHeaderCellDef></th>
+      <td cdk-cell *cdkCellDef="let element" class="text-end pe-5">
+      <span [innerHTML]="element['transactionAmount'] | currency: ' ' | mwaziTransaction: element.transactionType"
+            class="mat-subtitle-1">
+      </span>
+      </td>
+    </ng-container>
+    <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+} @else {
+  <p class="p-5 text-center">Linked transactions appear here.</p>
+}
+
+<ng-template #successDialogContents>
+  <h2>Great news
+    <mat-icon svgIcon="thumbs-up"></mat-icon>
+  </h2>
+  <p>
+    Your transaction has been updated successfully!</p>
+</ng-template>
+<ng-template #successDialogActions>
+  <button [mat-dialog-close]="true" color="primary" mat-raised-button>
+    Done
+  </button>
+</ng-template>

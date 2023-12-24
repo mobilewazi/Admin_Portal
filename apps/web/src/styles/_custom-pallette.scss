@@ -1,0 +1,118 @@
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-web-primary: (
+  50 : #e5e7fe,
+  100 : #bec3fc,
+  200 : #939bfb,
+  300 : #6872f9,
+  400 : #4754f7,
+  500 : #2736f6,
+  600 : #2330f5,
+  700 : #1d29f3,
+  800 : #1722f2,
+  900 : #0e16ef,
+  A100 : #ffffff,
+  A200 : #e7e8ff,
+  A400 : #b4b6ff,
+  A700 : #9b9dff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+/* For use in src/lib/core/theming/_palette.scss */
+$md-web-warn: (
+  50 : #fbe3e8,
+  100 : #f5b9c5,
+  200 : #ee8a9e,
+  300 : #e75b77,
+  400 : #e13759,
+  500 : #dc143c,
+  600 : #d81236,
+  700 : #d30e2e,
+  800 : #ce0b27,
+  900 : #c5061a,
+  A100 : #ffeeef,
+  A200 : #ffbbc0,
+  A400 : #ff8890,
+  A700 : #ff6f78,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-web-accent: (
+  50 : #e4f1e5,
+  100 : #bbddbf,
+  200 : #8dc794,
+  300 : #5fb069,
+  400 : #3d9f49,
+  500 : #1b8e29,
+  600 : #188624,
+  700 : #147b1f,
+  800 : #107119,
+  900 : #085f0f,
+  A100 : #91ff97,
+  A200 : #5eff67,
+  A400 : #2bff36,
+  A700 : #12ff1e,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+
+
+
+* {
+  --mdc-shape-small: 16px;
+  --mat-dialog-transition-duration: 300ms;
+  --mdc-dialog-container-shape: 12px;
+}
+

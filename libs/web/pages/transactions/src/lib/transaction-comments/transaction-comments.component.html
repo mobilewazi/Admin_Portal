@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="form.valid && addComment($event)">
+  <div class="p-2 pt-4">
+
+       <mat-form-field appearance="outline" class="w-100">
+         <input placeholder="Write a comment..." matInput  formControlName="newComment">
+         <button [disabled]="form.invalid" type="button" (click)="addComment($event)" matSuffix mat-button color="primary">
+
+           <span class="d-flex align-items-center p-2">
+           <mat-icon svgIcon="submit"></mat-icon>
+           </span>
+         </button>
+       </mat-form-field>
+
+  </div>
+</form>
+
+<ul>
+  @for (comment of comments(); track comment.id) {
+    <li data-aos="slide-right" data-aos-duration="300">
+      <p class="m-0 p-0 mat-headline-4">{{ comment.description }}</p>
+      <p class="m-0 p-0 mb-3 mat-headline-4 text-light">{{ comment.createdAt | date:'dd, MMM yyyy hh:mm a' }}</p>
+    </li>
+  }
+</ul>
+

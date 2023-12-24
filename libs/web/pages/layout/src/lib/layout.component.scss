@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+mat-drawer {
+  min-width: 250px !important;
+  padding-top: 90px !important;
+  position: fixed !important;
+}
+mat-toolbar {
+  position: fixed !important;
+  z-index: 2;
+}
+mat-drawer-content {
+  margin-top: 70px;
+  //min-height: calc(100vh - 96px);
+  //
+  //overflow-x: unset !important;
+}
+
+.active {
+  border-left: 4px solid #29379d;
+}
+

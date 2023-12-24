@@ -1,0 +1,111 @@
+<h1 data-aos="fade" data-aos-duration="300">
+  @if (projectId()) {
+    Edit Project
+  } @else {
+    Create Project
+  }
+</h1>
+<p data-aos="fade" data-aos-duration="400">Create a project and start tracking your mobile wallet funds.</p>
+<div data-aos="fade" data-aos-delay="300" class="mt-5">
+  <form [formGroup]="form" class="row" (ngSubmit)="submitForm()">
+    <div class="col-md-6 col-lg-4 mb-3">
+      <mat-form-field appearance="outline" floatLabel="always" class="w-100">
+        <mat-label>Project Name</mat-label>
+        <input placeholder="e.g Jane Baby Shower" matInput formControlName="projectName" required>
+        <mat-error *ngIf="form.get('projectName')?.hasError('required')">Project Name is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <mat-form-field appearance="outline" floatLabel="always" class="w-100">
+        <mat-label>Category</mat-label>
+        <mat-select placeholder="Select type of project" formControlName="category">
+          <mat-option *ngFor="let category of categories()" [value]="category.id">{{ category.label }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('category')?.hasError('required')">Category is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3" *ngIf="showOtherCategory()">
+      <mat-form-field appearance="outline" floatLabel="always" class="w-100">
+        <mat-label>Other Category</mat-label>
+        <input matInput formControlName="otherCategory" required>
+        <mat-error *ngIf="form.get('otherCategory')?.hasError('required')">Other Category is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <mat-form-field appearance="outline" floatLabel="always" class="w-100">
+        <mat-label>Project Target Amount (optional)</mat-label>
+        <input placeholder="Enter Amount" matInput formControlName="targetAmount" type="number">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <mat-form-field appearance="outline" floatLabel="always" class="w-100">
+        <mat-label>Project start date - Project end date (optional)</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="startDate" placeholder="Select Date">
+          <input matEndDate formControlName="endDate" placeholder="Select Date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-hint>
+          <mat-icon>info</mat-icon>
+          Only transactions from the start date can be added to the project
+        </mat-hint>
+        <mat-error *ngIf="form.get('startDate')?.hasError('required')">Start date is required</mat-error>
+
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" floatLabel="always" class="w-100">
+        <mat-label>Project description (optional)</mat-label>
+        <textarea placeholder="Enter description" matInput formControlName="description"></textarea>
+
+      </mat-form-field>
+    </div>
+    <div class="p-3">
+      <fieldset>
+        <legend>Advanced Settings</legend>
+        <div class="d-flex pt-4">
+          <div class="col-md-6 col-lg-4 mb-3">
+            <mat-checkbox formControlName="deactivateOnEndDateReached">
+              Automatically deactivate project once the project end date is reached
+            </mat-checkbox>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-3">
+            <mat-checkbox formControlName="deactivateOnTargetAmountReached">
+              Automatically deactivate project when Collections Exceed the Target Amount
+            </mat-checkbox>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-3">
+            <mat-checkbox formControlName="deactivateWhenExpenseExceedCollection">
+              Automatically deactivate project when Expenses Exceed the Target Amount
+            </mat-checkbox>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+
+    <div class="col-12 mt-4 mb-5">
+      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">
+        @if (projectId()) {
+          Save
+        } @else {
+          Submit
+        }
+      </button>
+    </div>
+  </form>
+</div>
+
+<ng-template #successDialogContents>
+  <h2>Great news
+    <mat-icon svgIcon="thumbs-up"></mat-icon>
+  </h2>
+  <p>Your project has been {{ projectId() ? 'updated' : 'created' }} successfully!</p>
+</ng-template>
+<ng-template #successDialogActions>
+  <button [mat-dialog-close]="true" color="primary" mat-raised-button>
+    View project details
+  </button>
+</ng-template>

@@ -1,0 +1,56 @@
+table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
+}
+
+tr{
+  color: inherit;
+  display: table-row;
+  vertical-align: middle;
+  outline: 0;
+}
+
+
+th {
+  background: white;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 600;
+  display: table-cell;
+  vertical-align: inherit;
+  border-bottom: 1px solid rgb(241, 243, 244);
+  text-align: left;
+  padding: 16px;
+  color: rgb(99, 115, 129);
+}
+//
+td {
+  line-height: 1.5714285714285714;
+  font-size: 0.875rem;
+  font-family: Public Sans,sans-serif;
+  font-weight: 400;
+  display: table-cell;
+  vertical-align: inherit;
+  border-bottom: 1px solid rgba(241, 243, 244, 1);
+  text-align: left;
+  padding: 16px;
+  color: #212B36;
+}
+//
+//
+tr {
+  font-size: 14px;
+
+  &:nth-of-type(odd) {
+    background-color: #DDEBF7;
+  }
+
+  &:last-child td, &:last-child th {
+    border: 0;
+  }
+}

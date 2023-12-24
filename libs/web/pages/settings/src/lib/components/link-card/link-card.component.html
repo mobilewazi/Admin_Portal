@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-center icon-container"
+           style="width: 57px; height: 57px; border-radius: 57px;">
+        <div style="width: 27px; height: 27px;">
+          <mat-icon [inline]="true" [svgIcon]="icon ?? 'submit'" color="primary"></mat-icon>
+        </div>
+      </div>
+      <div class="col ms-3">
+        <p class="mat-headline-3 m-0 p-0">{{ cardTitle }}</p>
+        @if (subTitle) {
+          <p class="mat-headline-3 m-0 p-0 text-light">{{ subTitle }}</p>
+        }
+      </div>
+      <div>
+        <button mat-icon-button color="primary mat-headline-3 m-0 p-0 px-3 ">
+          <mat-icon svgIcon="chevron-right"></mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,38 @@
+@import "styles/custom_material_theme";
+
+@import "styles/custom-bootstrap";
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Noto Sans", "Helvetica Neue", sans-serif; }
+
+body, html {
+  overflow: unset !important;
+}
+
+
+mat-form-field {
+  width: 100%;
+}
+
+.text-success {
+  color: rgb(47, 152, 3);
+}
+
+.text-danger {
+  color: rgb(211, 47, 47);
+}
+
+.chart-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  canvas {
+    max-height: 250px;
+    width: auto;
+  }
+}

@@ -1,0 +1,11 @@
+<div
+  [matTooltip]="cardData.value"
+  class="d-flex align-items-center overflow-hidden"
+  style="text-overflow: ellipsis; white-space: nowrap;">
+  <div style="width: 50px; height: 50px" class="me-2">
+    <mat-icon [color]="cardData.iconColor" [inline]="true" [svgIcon]="cardData.icon"></mat-icon>
+  </div>
+
+  <span class="mat-h2 m-0 p-0"
+        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ cardData.value }}</span>
+</div>
