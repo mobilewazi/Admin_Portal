@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve:web": "nx serve web --port 4203"
+    "serve:web": "nx serve web --port 4203",
+    "build:web": "nx build web"
   },
   "private": true,
   "dependencies": {
