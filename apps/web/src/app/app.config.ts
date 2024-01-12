@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, inject } from '@angular/core';
-import { provideRouter, withEnabledBlockingInitialNavigation, } from '@angular/router';
+import { provideRouter, withEnabledBlockingInitialNavigation,withHashLocation } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -37,7 +37,7 @@ const addAccessToken = (req: HttpRequest<any>, next: HttpHandlerFn) => {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    provideRouter(appRoutes, withEnabledBlockingInitialNavigation(), withHashLocation()),
     provideAnimations(),
     provideHttpClient(
       withInterceptors([
