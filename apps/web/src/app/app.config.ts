@@ -14,6 +14,7 @@ import { handleHttpError } from '@mwazi/shared/alert';
 const addBaseUrl = (req: HttpRequest<any>, next: HttpHandlerFn) => {
   const fileExtensionRegex = /\.(jpg|png|pdf|json|svg)$/i;
   const env = inject(ENVIRONMENT);
+  console.log(env);
   let apiReq = req;
   if (!fileExtensionRegex.test(req.url)) {
     apiReq = req.clone({url: `${env.baseHref}/${req.url}`});
