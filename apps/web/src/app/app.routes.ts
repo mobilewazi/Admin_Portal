@@ -36,7 +36,7 @@ export const appRoutes: Route[] = [
 
           }
         ]
-      },
+      }
     ]
   },
 
@@ -52,17 +52,21 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'dashboard',
-        loadComponent: () => import('@mwazi/pages/dashboard'),
+        loadComponent: () => import('@mwazi/pages/dashboard')
 
       },
       {
         path: 'projects/create',
-        loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ManageProjectComponent),
+        loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ManageProjectComponent)
 
       },
       {
+        path: 'users',
+          loadComponent: () => import('@mwazi/web/pages/users')
+      },
+      {
         path: 'projects',
-        loadComponent: () => import('@mwazi/web/pages/projects'),
+        loadComponent: () => import('@mwazi/web/pages/projects')
       },
       {
         path: 'projects/:projectId',
@@ -75,11 +79,11 @@ export const appRoutes: Route[] = [
           {
             path: '',
             pathMatch: 'full',
-            loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ViewProjectComponent),
+            loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ViewProjectComponent)
           },
           {
             path: 'edit',
-            loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ManageProjectComponent),
+            loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ManageProjectComponent)
           },
           {
             path: 'transactions/:transactionId',
@@ -87,13 +91,13 @@ export const appRoutes: Route[] = [
               transaction: (route: ActivatedRouteSnapshot) =>
                 inject(TransactionService).getItemBy(route.paramMap.get('transactionId'))
             },
-            loadComponent: () => import('@mwazi/web/pages/transactions').then(m => m.ViewTransactionComponent),
+            loadComponent: () => import('@mwazi/web/pages/transactions').then(m => m.ViewTransactionComponent)
           }
-        ],
+        ]
       },
       {
         path: 'projects/report/:projectLink',
-        loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ViewProjectReportComponent),
+        loadComponent: () => import('@mwazi/web/pages/projects').then(m => m.ViewProjectReportComponent)
 
       },
       {
@@ -102,7 +106,7 @@ export const appRoutes: Route[] = [
 
       }
     ]
-  },
+  }
 
 
 ];
