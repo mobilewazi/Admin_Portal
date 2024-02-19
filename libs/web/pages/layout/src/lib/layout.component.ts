@@ -6,8 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LinkCardComponent } from '@mwazi/web/pages/settings';
-import { ProfileComponent } from '@mwazi/web/pages/settings';
+import { LinkCardComponent, ProfileComponent } from '@mwazi/web/pages/settings';
 import { IconListEnum, IconService } from '@mwazi/shared/icons';
 
 @Component({

@@ -38,11 +38,12 @@ export class UsersComponent implements AfterViewInit {
   }
 
   columns = signal([
-    {columnName: 'id', type: 'text', label: 'ID'},
     {columnName: 'createdAt', type: 'date', label: 'Created At'},
     {columnName: 'name', type: 'text', label: 'Name'},
-    {columnName: 'email', type: 'link-text', label: 'Project Name', linkField: 'id'},
-    {columnName: 'phoneNumber', type: 'text', label: 'Project Code'}
+    {columnName: 'email', type: 'link-text', label: 'Email', linkField: 'id'},
+    {columnName: 'phoneNumber', type: 'text', label: 'Phone Number'},
+    {columnName: 'noOfProjects', type: 'text', label: 'Projects'},
+    {columnName: 'noOfTransactions', type: 'text', label: 'Transactions'},
   ]);
   private _selectedColumns = signal(['name', 'email', 'phoneNumber']);
   displayedColumns = computed(() => [...this._selectedColumns(), 'actions']);

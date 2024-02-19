@@ -50,7 +50,7 @@
                   {{ element[column.columnName] | date: 'shortDate' }}
               </span>
           <a style="color: inherit" *ngSwitchCase="'link-text'"
-             [routerLink]="['/userss', element[$any(column['linkField'])]]">
+             [routerLink]="['/users', element[$any(column['linkField'])]]">
             {{ element[column.columnName] }}
           </a>
 
@@ -77,18 +77,17 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-<!--        <button [routerLink]="['/projects','report', element.projectLink]" mat-menu-item>-->
-<!--          <mat-icon>dialpad</mat-icon>-->
-<!--          <span>View Report</span>-->
-<!--        </button>-->
+        <button [routerLink]="['/users', element.id]" mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>View User</span>
+        </button>
       </mat-menu>
     </td>
   </ng-container>
 
 
   <tr cdk-header-row *cdkHeaderRowDef="displayedColumns();"></tr>
-  <tr cdk-row *cdkRowDef="let row; columns: displayedColumns();"
-      [ngStyle]="{color: row.status === 'Active' ? '#2F9803': '#D32F2F'}"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: displayedColumns();"></tr>
 </table>
 
 <ngx-skeleton-loader *ngIf="loading()" appearance="line" [count]="8"

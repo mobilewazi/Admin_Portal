@@ -11,7 +11,7 @@ export class UsersService {
   }
 
   getAll(): Observable<ProjectInterface[]> {
-    return this.http.get<ResponseInterface<ProjectInterface[]>>('api/users').pipe(
+    return this.http.get<ResponseInterface<ProjectInterface[]>>('users').pipe(
       map(({responseObject}) => responseObject),
     )
   }

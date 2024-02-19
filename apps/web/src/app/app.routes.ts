@@ -62,7 +62,18 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'users',
-          loadComponent: () => import('@mwazi/web/pages/users')
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            loadComponent: () => import('@mwazi/web/pages/users')
+          },
+          {
+            path: ':id',
+            loadComponent: () => import('@mwazi/web/pages/users').then(m => m.ViewUserComponent)
+          }
+
+        ]
       },
       {
         path: 'projects',
