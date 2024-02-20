@@ -1,1 +1,141 @@
-Works
+<h1>
+  <mwazi-back-button class="me-3"></mwazi-back-button>
+  Users | {{ userDetails().name }}
+</h1>
+
+<div class="d-flex align-items-center">
+  <div class="mr-3" style="width: 300px; height: 300px;">
+    @if (!userDetails().avatar) {
+      <mat-icon style="font-size: 300px; line-height: 300px" [inline]="true">person_3</mat-icon>
+    } @else {
+      <img [src]="userDetails().avatar" alt="">
+    }
+  </div>
+  <div>
+    <p>Name: <strong>{{ userDetails().name }}</strong></p>
+    <p>Email: <strong>{{ userDetails().email }}</strong></p>
+    <p>Phone Number: @if (userDetails().phone) {
+      <strong>{{ userDetails().phone }}</strong>
+    } @else {
+      <strong class="text-danger">NOT SET</strong>
+    }</p>
+    <p class="d-flex align-items-center">Email Verified: @if (userDetails().isEmailConfirmed) {
+      <mat-icon color="accent">check</mat-icon>
+    } @else {
+      <mat-icon color="warn">close</mat-icon>
+    }</p>
+    <p class="d-flex align-items-center">Phone Verified: @if (userDetails().isPhoneNumberConfirmed) {
+      <mat-icon color="accent">check</mat-icon>
+    } @else {
+      <mat-icon color="warn">close</mat-icon>
+    }</p>
+    <p>Created: {{ userDetails().createdAt | date }}</p>
+  </div>
+
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="row g-3 mt-3">
+  <mat-card class="me-3">
+    <mat-card-header>
+      <mat-card-title>
+        Projects
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="d-flex align-items-center justify-content-between">
+          <mat-icon color="primary" [inline]="true">person_3</mat-icon>
+
+        <span class="mat-h2 m-0 p-0"
+              style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ userDetails().projects.length }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="me-3">
+    <mat-card-header>
+      <mat-card-title>
+        Transactions
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="d-flex align-items-center justify-content-between">
+        <mat-icon color="primary" [inline]="true">person_3</mat-icon>
+
+        <span class="mat-h2 m-0 p-0"
+              style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ userDetails().transactions.length }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-tab-group class="mt-5">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Transactions
+    </ng-template>
+    <div class="mt-4"> <mwazi-transaction-table [transactions]="userDetails().transactions"></mwazi-transaction-table></div>
+
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Projects
+    </ng-template>
+
+    <table cdk-table [dataSource]="userDetails().projects"
+           class="cdk-elevation-z8 mt-4">
+
+      @for (column of columns();track column.columnName;) {
+        <ng-container [matColumnDef]="column.columnName">
+          <th cdk-header-cell *cdkHeaderCellDef>{{ column.label }}
+          </th>
+          <td cdk-cell *cdkCellDef="let element">
+            <ng-container [ngSwitch]="column.type">
+              <span *ngSwitchCase="'date'">
+                  {{ element[column.columnName] | date: 'shortDate' }}
+              </span>
+              <a style="color: inherit" *ngSwitchCase="'link-text'"
+                 [routerLink]="['/projects', element[$any(column['linkField'])]]">
+                {{ element[column.columnName] }}
+              </a>
+
+              <mat-chip *ngSwitchCase="'active'" [highlighted]="true"
+                        [color]="element[column.columnName] === 'Active' ? 'accent' : 'warn'">
+                {{ element[column.columnName] }}
+              </mat-chip>
+              <span *ngSwitchDefault>
+                  {{ element[column.columnName] }}
+              </span>
+            </ng-container>
+
+          </td>
+        </ng-container>
+      }
+
+
+      <ng-container matColumnDef="actions">
+        <th cdk-header-cell *cdkHeaderCellDef>
+          Actions
+        </th>
+        <td cdk-cell *cdkCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button [routerLink]="['/projects','report', element.projectLink]" mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>View Report</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns();"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns();"
+          [ngStyle]="{color: row.status === 'Active' ? '#2F9803': '#D32F2F'}"></tr>
+    </table>
+  </mat-tab>
+</mat-tab-group>

@@ -16,6 +16,12 @@ export class UsersService {
     )
   }
 
+    getById(userId: string): Observable<ProjectInterface[]> {
+    return this.http.get<ResponseInterface<ProjectInterface[]>>(`users/${userId}`).pipe(
+      map(({responseObject}) => responseObject),
+    )
+  }
+
   create(value: any) {
     return this.http.post<ResponseInterface<ICreatedProject>>('api/users', value).pipe(
       map(({responseObject}) => responseObject),

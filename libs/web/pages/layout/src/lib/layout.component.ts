@@ -41,7 +41,7 @@ export class LayoutComponent {
   links = signal([
     {href: ['/dashboard'], label: 'Dashboard', icon: 'home'},
     {href: ['/projects'], label: 'Projects', icon: 'home'},
-    {href: ['/users'], label: 'Users', icon: 'user'},
+    {href: ['/users'], label: 'Users', icon: 'person'},
     {href: ['/settings'], label: 'Settings', icon: 'settings'},
   ]);
 
