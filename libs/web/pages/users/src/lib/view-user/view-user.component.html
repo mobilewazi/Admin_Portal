@@ -67,6 +67,38 @@
       </div>
     </mat-card-content>
   </mat-card>
+
+  <mat-card class="me-3">
+    <mat-card-header>
+      <mat-card-title>
+        Total Contribution
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="d-flex align-items-center justify-content-between">
+        <mat-icon color="primary" [inline]="true">person_3</mat-icon>
+
+        <span class="mat-h2 m-0 p-0"
+              style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ totalContribution() | currency: ' ' }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="me-3">
+    <mat-card-header>
+      <mat-card-title>
+        Active Projects
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="d-flex align-items-center justify-content-between">
+        <mat-icon color="primary" [inline]="true">person_3</mat-icon>
+
+        <span class="mat-h2 m-0 p-0"
+              style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ activeProjects() }} / {{ userDetails().projects.length }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
 <mat-tab-group class="mt-5">
   <mat-tab>
