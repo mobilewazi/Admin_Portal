@@ -1,5 +1,11 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
+
+  <div class="row justify-content-end">
+<!--    <button (click)="openFilterDialog()" aria-label="Filter" mat-icon-button>-->
+<!--      <mat-icon color="primary">filter_list</mat-icon>-->
+<!--    </button>-->
+  </div>
   <mat-grid-list cdkDropList (cdkDropListDropped)="onTileDrop($event)" cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
 
     @for (card of dashboardCardsDisplayed();track card.title) {
@@ -20,7 +26,7 @@
       @if (card.type === 'miniCard') {
         <mat-grid-tile [colspan]="( cardLayout | async )?.miniCard?.cols"
                        [rowspan]="( cardLayout | async )?.miniCard?.rows" cdkDrag>
-          <mwazi-dashboard-card [cardTitle]="card.title" (removeCard)="removeCard(card.key)">
+          <mwazi-dashboard-card [navigatesTo]="card.navigatesTo ?? ['/dashboard']" [cardTitle]="card.title" (removeCard)="removeCard(card.key)">
             <mwazi-dashboard-mini-card [cardData]="$any(card)"></mwazi-dashboard-mini-card>
           </mwazi-dashboard-card>
         </mat-grid-tile>

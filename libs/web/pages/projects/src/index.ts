@@ -4,4 +4,5 @@ export { ViewProjectReportComponent } from './lib/view-project-report/view-proje
 export { ManageProjectComponent } from './lib/manage-project/manage-project.component';
 export {
   DeleteTransactionConfirmationComponent
-} from './lib/delete-transaction-confirmation/delete-transaction-confirmation.component'
+} from './lib/delete-transaction-confirmation/delete-transaction-confirmation.component';
+export { TransactionsTableComponent } from './lib/transactions-table/transactions-table.component'

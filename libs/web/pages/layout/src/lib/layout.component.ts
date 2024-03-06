@@ -6,8 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LinkCardComponent } from '../../../settings/src/lib/components/link-card/link-card.component';
-import { ProfileComponent } from '../../../settings/src/lib/components/profile/profile.component';
+import { LinkCardComponent, ProfileComponent } from '@mwazi/web/pages/settings';
 import { IconListEnum, IconService } from '@mwazi/shared/icons';
 
 @Component({
@@ -42,6 +41,7 @@ export class LayoutComponent {
   links = signal([
     {href: ['/dashboard'], label: 'Dashboard', icon: 'home'},
     {href: ['/projects'], label: 'Projects', icon: 'home'},
+    {href: ['/users'], label: 'Users', icon: 'person'},
     {href: ['/settings'], label: 'Settings', icon: 'settings'},
   ]);
 

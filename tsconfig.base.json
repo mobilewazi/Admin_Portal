@@ -28,6 +28,7 @@
       "@mwazi/shared/profile": ["libs/shared/profile/src/index.ts"],
       "@mwazi/shared/report": ["libs/shared/report/src/index.ts"],
       "@mwazi/shared/transaction": ["libs/shared/transaction/src/index.ts"],
+      "@mwazi/web/pages/users": ["libs/web/pages/users/src/index.ts"],
       "@mwazi/web/config": ["libs/web/config/src/index.ts"],
       "@mwazi/web/dashboard": ["libs/web/dashboard/src/index.ts"],
       "@mwazi/web/pages/layout": ["libs/web/pages/layout/src/index.ts"],
