@@ -1,0 +1,94 @@
+<h1>
+  <mwazi-back-button class="me-3"></mwazi-back-button>
+  Users
+</h1>
+
+<div class="d-flex justify-content-end mb-3">
+  <button [routerLink]="['/users', 'create']" color="primary" mat-raised-button>New User</button>
+</div>
+<mat-form-field color="accent">
+  <mat-label>Shown Columns</mat-label>
+  <mat-select [multiple]="true" [(ngModel)]="selectedColumns">
+
+    <mat-select-trigger>
+      @for (column of selectColumns();track column.columnName) {
+        <mat-chip
+          [highlighted]="column.selected"
+          [disabled]="!column.selected"
+          class="me-2 px-2"
+          color="accent"
+        >
+          {{ column.label }}
+        </mat-chip>
+      }
+      <!--      {{toppings.value?.[0] || ''}}-->
+      <!--      @if ((toppings.value?.length || 0) > 1) {-->
+      <!--        <span class="example-additional-selection">-->
+      <!--          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})-->
+      <!--        </span>-->
+      <!--      }-->
+    </mat-select-trigger>
+
+    @for (column of columns();track column.columnName) {
+      <mat-option [value]="column.columnName">
+        {{ column.label }}
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+<table cdk-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="cdk-elevation-z8">
+
+  @for (column of columns();track column.columnName;) {
+    <ng-container [matColumnDef]="column.columnName">
+      <th cdk-header-cell *cdkHeaderCellDef mat-sort-header
+          [sortActionDescription]="'Sort by ' + column.label">{{ column.label }}
+      </th>
+      <td cdk-cell *cdkCellDef="let element">
+        <ng-container [ngSwitch]="column.type">
+              <span *ngSwitchCase="'date'">
+                  {{ element[column.columnName] | date: 'shortDate' }}
+              </span>
+          <a style="color: inherit" *ngSwitchCase="'link-text'"
+             [routerLink]="['/users', element[$any(column['linkField'])]]">
+            {{ element[column.columnName] }}
+          </a>
+
+          <mat-chip *ngSwitchCase="'active'" [highlighted]="true"
+                    [color]="element[column.columnName] === 'Active' ? 'accent' : 'warn'">
+            {{ element[column.columnName] }}
+          </mat-chip>
+          <span *ngSwitchDefault>
+                  {{ element[column.columnName] }}
+              </span>
+        </ng-container>
+
+      </td>
+    </ng-container>
+  }
+
+
+  <ng-container matColumnDef="actions">
+    <th cdk-header-cell *cdkHeaderCellDef>
+      Actions
+    </th>
+    <td cdk-cell *cdkCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button [routerLink]="['/users', element.id]" mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>View User</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+
+  <tr cdk-header-row *cdkHeaderRowDef="displayedColumns();"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: displayedColumns();"></tr>
+</table>
+
+<ngx-skeleton-loader *ngIf="loading()" appearance="line" [count]="8"
+                     [theme]="{height: '50px', marginBottom: '0px'}"></ngx-skeleton-loader>

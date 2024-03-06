@@ -1,0 +1,29 @@
+mat-card {
+  max-width: 300px;
+  mat-icon {
+    font-size: 60px;
+    line-height: 80px;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 16px;
+  tr {
+
+    td {
+      padding-left: 14px;
+      background: white;
+    }
+
+    td:first-child{
+      border-radius: 5px;
+      border-left: 5px solid;
+
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+}

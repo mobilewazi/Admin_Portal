@@ -17,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   AddDashboardCardItemDialogComponent
 } from '../add-dashboard-card-dialog/add-dashboard-card-item-dialog.component';
+import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
 
 @Component({
   selector: 'mwazi-dashboard',
@@ -99,6 +100,7 @@ export class DashboardComponent {
 
   dashboardCards: Signal<{
     [key: string]: {
+      navigatesTo?: string[];
       key: string,
       removed: boolean;
       icon: string;
@@ -114,24 +116,31 @@ export class DashboardComponent {
     const k = {
       projects: {
         value: String(statistics.projects),
+        navigatesTo: ['/projects']
       },
       totalUsers: {
         value: String(statistics.totalUsers),
+        navigatesTo: ['/users']
       },
       projectsValue: {
         value: this.currencyPipe.transform(statistics.projectsValue, 'KES ') ?? '',
+        navigatesTo: ['/projects']
       },
       noOfPayments: {
         value: this.decimalPipe.transform(statistics.noOfPaymets) ?? '',
+        navigatesTo: ['/projects']
       },
       revenuesByMonth: {
         value: this.revenueBarChartData(),
+        navigatesTo: ['/projects']
       },
       projectsPerCategory: {
         value: this.categoryProjectsChartData(),
+        navigatesTo: ['/projects']
       },
       valuePerCategory: {
         value: this.categoryValueChartData(),
+        navigatesTo: ['/projects']
       }
     };
     const p = this.dashboardCardPreference();
@@ -220,6 +229,15 @@ export class DashboardComponent {
 
   showAddCardItemDialog() {
     const dialog = this.dialog.open(AddDashboardCardItemDialogComponent);
+    dialog.afterClosed().pipe(
+      tap((res: string[]) => {
+        console.log(res)
+      })
+    ).subscribe()
+  }
+
+  openFilterDialog() {
+    const dialog = this.dialog.open(FilterDialogComponent);
     dialog.afterClosed().pipe(
       tap((res: string[]) => {
         console.log(res)
